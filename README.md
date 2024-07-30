@@ -10,9 +10,17 @@
 
 ## Technology Stack
 
-- **Frontend:** ReactJS
+- **Frontend:** React, Redux
 - **Backend:** Node.js with Express
 - **Database:** MongoDB (Atlas)
+
+## Setup and Running the Project
+
+### Run Frontend
+
+- cd frontend
+- npm install
+- npm run dev
 
 ## Database Schema Design
 
