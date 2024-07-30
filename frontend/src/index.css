@@ -1,3 +1,36 @@
+/* Reset */
+:root {
+  --white-color: #f7f7ff;
+  --black-color: #1c1e21;
+  --primary-color: #236F81;
+  --secondary-color: #CF974E;
+  --dark-white: #969faf;
+
+  --semi-bold: 500;
+
+  font-size: 62.5%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* Font Family  */
 .poppins-light {
   font-family: "Poppins", sans-serif;
