@@ -1,0 +1,17 @@
+.home__container {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; 
+  justify-content: space-between;
+}
+
+.product {
+  flex: 1 1 calc(25% - 2rem); 
+}
