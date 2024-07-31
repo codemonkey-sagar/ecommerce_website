@@ -47,7 +47,11 @@ Before you begin, ensure you have met the following requirements:
 
 ### Run Frontend and Backend Concurrently (to fire up project)
 
-- npm run dev (it will run both the Frontend `using vite` and backend)
+(it will run both the Frontend `using vite` and backend)
+
+```sh
+npm run dev
+```
 
 ## Database Schema Design
 
