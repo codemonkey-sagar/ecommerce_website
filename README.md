@@ -14,13 +14,40 @@
 - **Backend:** Node.js with Express
 - **Database:** MongoDB (Atlas)
 
+## Project Overview
+
+Krishna Marbles Ecommerce Website is a full-stack web application designed to facilitate the online sale of marble products. The project uses modern web technologies to provide a robust and scalable ecommerce platform.
+
 ## Setup and Running the Project
 
-### Run Frontend
+### Prerequisites
 
-- cd frontend
-- npm install
-- npm run dev
+Before you begin, ensure you have met the following requirements:
+
+- Node.js and npm installed
+- MongoDB Atlas account for database setup
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/codemonkey-sagar/km_ecommerce.git
+   cd km_ecommerce
+   ```
+
+2. Install dependencies for both frontend and backend:
+   ```sh
+   npm install
+   cd frontend
+   npm install
+   cd ../backend
+   npm install
+   ```
+
+### Run Frontend and Backend Concurrently (to fire up project)
+
+- npm run dev (it will run both the Frontend `using vite` and backend)
 
 ## Database Schema Design
 
@@ -28,13 +55,26 @@
 
 ```json
 {
-  "productId": "ObjectId",
   "name": "String",
-  "description": "String",
+  "image": "String",
+  "brand": "String",
   "category": "String",
-  "stock": "Number",
-  "imageUrls": ["String"],
-  "relatedWebsites": ["String"]
+  "description": "String",
+  "reviews": [
+    {
+      "name": "String",
+      "rating": "Number",
+      "comment": "String",
+      "user": "ObjectId (ref: User)",
+      "timestamps": "true"
+    }
+  ],
+  "rating": "Number (default: 0)",
+  "numReviews": "Number (default: 0)",
+  "price": "Number (default: 0)",
+  "countInStock": "Number (default: 0)",
+  "user": "ObjectId (ref: User)",
+  "timestamps": "true"
 }
 ```
 
@@ -42,22 +82,50 @@
 
 ```json
 {
-  "userId": "ObjectId",
-  "username": "String",
+  "name": "String",
+  "email": "String (unique)",
   "password": "String",
-  "email": "String",
-  "address": "String"
+  "isAdmin": "Boolean (default: false)",
+  "timestamps": "true"
 }
 ```
 
-### Price Schema
+### Order Schema
 
 ```json
 {
-  "priceId": "ObjectId",
-  "productId": "ObjectId",
-  "userId": "ObjectId", // Can be null for default prices
-  "price": "Number"
+  "user": "ObjectId (ref: User)",
+  "orderItems": [
+    {
+      "name": "String",
+      "qty": "Number",
+      "image": "String",
+      "price": "Number",
+      "product": "ObjectId (ref: Product)"
+    }
+  ],
+  "shippingAddress": {
+    "address": "String",
+    "city": "String",
+    "postalCode": "String",
+    "country": "String"
+  },
+  "paymentMethod": "String",
+  "paymentResult": {
+    "id": "String",
+    "status": "String",
+    "email_address": "String",
+    "updated_time": "String"
+  },
+  "itemsPrice": "Number (default: 0.0)",
+  "taxPrice": "Number (default: 0.0)",
+  "shippingPrice": "Number (default: 0.0)",
+  "totalPrice": "Number (default: 0.0)",
+  "isPaid": "Boolean (default: false)",
+  "paidAt": "Date",
+  "isDelivered": "Boolean (default: false)",
+  "deliveredAt": "Date",
+  "timestamps": "true"
 }
 ```
 
