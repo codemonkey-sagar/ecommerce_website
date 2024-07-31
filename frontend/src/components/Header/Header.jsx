@@ -2,6 +2,7 @@ import './Header.css';
 import Logo from '../../assets/krishna-marbles-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -16,7 +17,9 @@ const Header = () => {
       <nav className='header__nav'>
         <div className='container'>
           <ul className='header__navbar header__navbar--left'>
-            <li className='header__navbar-item'>Home</li>
+            <li className='header__navbar-item'>
+              <Link to='/'>Home</Link>
+            </li>
             <li className='header__navbar-item'>About</li>
             <li className='header__navbar-item'>Products</li>
             <li className='header__navbar-item'>Explore</li>

@@ -47,3 +47,11 @@ header {
   padding: 1.6rem;
   gap: 2rem;
 }
+
+.header__navbar-item > a {
+  color: var(--white-color);
+}
+
+.header__navbar-item > a:hover {
+  color: var(--secondary-color);
+}

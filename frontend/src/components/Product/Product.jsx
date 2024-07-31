@@ -1,22 +1,23 @@
 import PropTypes from 'prop-types';
 import './Product.css';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   return (
     <div className='product'>
       <div className='product__image'>
-        <a href={`/product/${product._id}`} className='product__image-link'>
+        <Link to={`/product/${product._id}`} className='product__image-link'>
           <img
             src={product.image}
             alt={product.name}
             className='product__image-img'
           />
-        </a>
+        </Link>
       </div>
       <div className='product__body'>
-        <a href={`/product/${product._id}`} className='product__name'>
+        <Link to={`/product/${product._id}`} className='product__name'>
           <strong>{product.name}</strong>
-        </a>
+        </Link>
         <p className='product__description'>{product.description}</p>
         <h3 className='product__price'>{product.price}</h3>
         <button className='product__cta'>Add to Cart</button>
