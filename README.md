@@ -47,6 +47,8 @@ Before you begin, ensure you have met the following requirements:
 
 ### Run Frontend and Backend Concurrently (to fire up project)
 
+**NOTE**: Make sure you remove `.example` in `.env.example` file.
+
 (it will run both the Frontend `using vite` and backend)
 
 ```sh
