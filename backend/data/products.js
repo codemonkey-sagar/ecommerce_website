@@ -14,12 +14,12 @@ const products = [
   },
   {
     _id: '2',
-    name: 'Marble Name 1',
+    name: 'Granite Name 1',
     image: '/images/marble1.jpg',
     description:
       'By the term marble, we generally mean Indian Marble coming to form Rajasthan. Various thickness as 14mm, 16mm, 20mm, etc is available. A wide range of marble in various colours, patterns, and shades can be found in our stockyard. We have marble countertops and marble tiles.',
     brand: 'Varmora',
-    category: 'Marble',
+    category: 'Granite',
     price: 'Rs. 270',
     countInStock: 120,
     rating: 3,
@@ -27,7 +27,7 @@ const products = [
   },
   {
     _id: '3',
-    name: 'Marble Name 1',
+    name: 'Tile Name 1',
     image: '/images/marble1.jpg',
     description:
       'By the term marble, we generally mean Indian Marble coming to form Rajasthan. Various thickness as 14mm, 16mm, 20mm, etc is available. A wide range of marble in various colours, patterns, and shades can be found in our stockyard. We have marble countertops and marble tiles.',
