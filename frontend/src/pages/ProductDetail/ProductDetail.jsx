@@ -9,10 +9,11 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(
+      const response = await axios.get(
         `http://localhost:8000/api/products/${id}`
       );
-      setProduct(data);
+      console.log(response);
+      setProduct(response.data);
     };
     fetchProduct();
   }, [id]);

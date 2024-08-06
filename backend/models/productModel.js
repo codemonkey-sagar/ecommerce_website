@@ -1,5 +1,34 @@
 import mongoose from 'mongoose';
 
+// Review Schema
+const reviewSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+
+    // User who reviewed the product
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+// Product Schema
 const productSchema = new mongoose.Schema(
   {
     name: {
@@ -45,34 +74,6 @@ const productSchema = new mongoose.Schema(
     },
 
     // Product should be connected to the user
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-// Review Schema
-const reviewSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    rating: {
-      type: Number,
-      required: true,
-    },
-    comment: {
-      type: String,
-      required: true,
-    },
-
-    // User for review the product
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
