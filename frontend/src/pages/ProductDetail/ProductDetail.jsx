@@ -4,23 +4,26 @@ import { useParams, Link } from 'react-router-dom';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState([]);
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await axios.get(
-        `http://localhost:8000/api/products/${id}`
-      );
-      console.log(response);
-      setProduct(response.data);
+      if (id) {
+        try {
+          const response = await axios.get(
+            `http://localhost:8000/api/products/${id}`
+          );
+          setProduct(response.data);
+        } catch (error) {
+          console.error('Error fetching product:', error.message);
+        }
+      }
     };
     fetchProduct();
   }, [id]);
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+  if (!product) return <div>Product not found</div>;
 
   return (
     <div className='productDetail'>
