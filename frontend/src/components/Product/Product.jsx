@@ -19,7 +19,7 @@ const Product = ({ product }) => {
           <strong>{product.name}</strong>
         </Link>
         <p className='product__description'>{product.description}</p>
-        <h3 className='product__price'>{product.price}</h3>
+        <h3 className='product__price'>Rs. {product.price}</h3>
         <button className='product__cta'>Add to Cart</button>
       </div>
     </div>

@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import DBConnection from './config/db.js';
 import ProductRoutes from './routes/productRoutes.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Connection to MongoDB
 DBConnection();
@@ -15,6 +16,10 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', ProductRoutes);
+
+// Error Handling middleware
+app.use(notFound);
+app.use(errorHandler);
 
 dotenv.config();
 const PORT = process.env.PORT || 8000;
