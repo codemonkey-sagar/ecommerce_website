@@ -1,14 +1,23 @@
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import './Header.css';
 import Logo from '../../assets/krishna-marbles-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartShopping,
+  faUser,
+  faCaretDown,
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { logout } from '../../slices/authSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   return (
     <header className='header'>
@@ -33,17 +42,42 @@ const Header = () => {
           </ul>
           <ul className='header__navbar header__navbar--right'>
             <li className='header__navbar-item'>Search Product</li>
-            <li className='header__navbar-item'>
+            <li className='header__navbar-item header__cart'>
               <Link to='/cart'>
-                {cartItems.length > 0 && (
-                  <div>{cartItems.reduce((a, c) => a + c.qty, 0)}</div>
-                )}
                 <FontAwesomeIcon icon={faCartShopping} />
+                {cartItems.length > 0 && (
+                  <span className='header__cart-count'>
+                    {cartItems.reduce((a, c) => a + c.qty, 0)}
+                  </span>
+                )}
               </Link>
             </li>
-            <li className='header__navbar-item'>
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: '6px' }} />
-              Login
+            <li className='header__navbar-item header__user'>
+              {userInfo ? (
+                <div className='header__user-dropdown'>
+                  <span className='header__user-name'>
+                    {userInfo.name}
+                    <FontAwesomeIcon
+                      icon={faCaretDown}
+                      className='header__user-caret'
+                    />
+                  </span>
+                  <ul className='header__dropdown-menu'>
+                    <li>
+                      <Link to='/profile'>Profile</Link>
+                    </li>
+                    <li onClick={logoutHandler}>Logout</li>
+                  </ul>
+                </div>
+              ) : (
+                <Link to='/login' className='header__login'>
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ marginRight: '6px' }}
+                  />
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-header {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,32 +26,101 @@ header {
   background-color: var(--primary-color);
 }
 
-.header__navbar--left {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  align-items: center;
-  padding: 1.6rem;
-  gap: 2rem;
-}
-
+.header__navbar--left,
 .header__navbar--right {
   display: flex;
   list-style: none;
-  cursor: pointer;
-  margin: 0;
   padding: 0;
+  margin: 0;
   align-items: center;
-  padding: 1.6rem;
   gap: 2rem;
+}
+
+.header__navbar-item {
+  position: relative;
+  padding: 1rem 1.5rem; 
 }
 
 .header__navbar-item > a {
   color: var(--white-color);
+  text-decoration: none;
+  transition: color 0.3s ease; 
 }
 
-.header__navbar-item > a:hover {
+.header__navbar-item:hover > a {
   color: var(--secondary-color);
+  cursor: pointer; 
+}
+
+.header__cart {
+  position: relative;
+}
+
+.header__cart-count {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 9px;
+  font-size: 1.2rem;
+}
+
+.header__user {
+  position: relative;
+}
+
+.header__user-dropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header__user-name {
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header__user-caret {
+  font-size: 1rem;
+}
+
+.header__dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.header__dropdown-menu li {
+  padding: 1rem 2rem;
+  white-space: nowrap;
+}
+
+.header__dropdown-menu li:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.header__user:hover .header__dropdown-menu {
+  display: block;
+}
+
+.header__login {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.header__login:hover {
+  color: var(--secondary-color);
+  cursor: pointer;
 }
