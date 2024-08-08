@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Header.css';
 import Logo from '../../assets/krishna-marbles-logo.png';
@@ -9,14 +10,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { logout } from '../../slices/authSlice';
+import { useLogoutMutation } from '../../slices/userApiSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { cartItems } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
+  const [logoutApiCall] = useLogoutMutation();
 
-  const logoutHandler = () => {
-    dispatch(logout());
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
