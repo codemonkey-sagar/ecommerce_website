@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import DBConnection from './config/db.js';
 import ProductRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Connection to MongoDB
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', ProductRoutes);
+app.use('/api/users', userRoutes);
 
 // Error Handling middleware
 app.use(notFound);

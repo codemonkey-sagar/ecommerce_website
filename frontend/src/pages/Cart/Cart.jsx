@@ -14,7 +14,7 @@ const Cart = () => {
     dispatch(addToCart({ ...product, qty }));
   };
 
-  const removeFormCartHandler = async (id) => {
+  const removeFromCartHandler = async (id) => {
     dispatch(removeFromCart(id));
   };
 
@@ -25,26 +25,30 @@ const Cart = () => {
   return (
     <div className='cart_container'>
       <h1>Shopping Cart</h1>
-      <div>
-        {cartItems.length === 0 ? (
-          <p className='message'>
-            Your cart is empty.
-            <Link to='/'>Go to Home Page</Link>
-          </p>
-        ) : (
-          <div>
+      {cartItems.length === 0 ? (
+        <p className='message'>
+          Your cart is empty. <Link to='/'>Go to Home Page</Link>
+        </p>
+      ) : (
+        <div className='cart_content'>
+          <div className='cart_items'>
             {cartItems.map((item) => (
-              <div key={item.id}>
-                <img src={item.image} alt={item.name} />
-                <p>
-                  <Link to={`/product/${item._id}`}>{item.name}</Link>
-                </p>
-                <p>Rs. {item.price}</p>
-                <p>
+              <div key={item._id} className='cart_item'>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className='cart_item_image'
+                />
+                <div className='cart_item_details'>
+                  <Link to={`/product/${item._id}`} className='cart_item_name'>
+                    {item.name}
+                  </Link>
+                  <p className='cart_item_price'>Rs. {item.price}</p>
                   {item.countInStock > 0 && (
-                    <div>
-                      <p>Quantity</p>
+                    <div className='cart_item_qty'>
+                      <label htmlFor={`qty-${item._id}`}>Quantity</label>
                       <select
+                        id={`qty-${item._id}`}
                         value={item.qty}
                         onChange={(e) =>
                           addToCartHandler(item, Number(e.target.value))
@@ -58,33 +62,38 @@ const Cart = () => {
                       </select>
                     </div>
                   )}
-                </p>
-                <p>
-                  <button onClick={() => removeFormCartHandler(item._id)}>
-                    Delete
-                  </button>
-                </p>
+                </div>
+                <button
+                  className='cart_item_delete'
+                  onClick={() => removeFromCartHandler(item._id)}
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>
-        )}
 
-        <div>
-          <h2>
-            Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-            items
-          </h2>
-          <div>
-            $
-            {cartItems
-              .reduce((acc, item) => acc + item.qty * item.price, 0)
-              .toFixed(2)}
+          <div className='cart_summary'>
+            <h2>
+              Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+              items
+            </h2>
+            <div className='cart_summary_total'>
+              Rs.{' '}
+              {cartItems
+                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)}
+            </div>
+            <button
+              className='cart_summary_button'
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler}
+            >
+              Proceed to Checkout
+            </button>
           </div>
-          <button disabled={cartItems.length === 0} onClick={checkoutHandler}>
-            Proceed to Checkout
-          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
