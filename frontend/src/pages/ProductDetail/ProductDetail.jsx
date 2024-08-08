@@ -1,15 +1,33 @@
-import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useGetProductDetailsQuery } from '../../slices/productsApiSlice';
+import { addToCart } from '../../slices/cartSlice';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id: productId } = useParams();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [qty, setQty] = useState(1);
 
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
+
+  const addToCartHandler = () => {
+    dispatch(
+      addToCart({
+        ...product,
+        qty,
+      })
+    );
+    navigate('/cart');
+  };
 
   return (
     <div className='productDetail'>
@@ -45,7 +63,25 @@ const ProductDetail = () => {
                   ? `In Stock: ${product.countInStock}`
                   : 'Out of Stock'}
               </div>
-              <button className='productDetail__addToCart'>Add to Cart</button>
+              {product.countInStock > 0 && (
+                <div>
+                  <p>Quantity</p>
+                  <select onChange={(e) => setQty(Number(e.target.value))}>
+                    {[...Array(product.countInStock).keys()].map((i) => (
+                      <option key={i + 1} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <button
+                className='productDetail__addToCart'
+                disabled={product.countInStock === 0}
+                onClick={addToCartHandler}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         )
