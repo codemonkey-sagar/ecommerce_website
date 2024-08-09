@@ -22,8 +22,8 @@ app.use(cookieParser());
 // Body parser middleware
 app.use(
   cors({
-    origin: 'http://localhost:5173', // Front-end URL
-    credentials: true, // Allow cookies to be sent with requests
+    origin: 'http://localhost:5173',
+    credentials: true,
   })
 );
 
