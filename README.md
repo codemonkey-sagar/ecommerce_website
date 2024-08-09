@@ -43,6 +43,7 @@ Before you begin, ensure you have met the following requirements:
    npm install
    cd ../backend
    npm install
+   npm run data:import
    ```
 
 ### Run Frontend and Backend Concurrently (to fire up project)
