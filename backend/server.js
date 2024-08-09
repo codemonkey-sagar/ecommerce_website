@@ -13,13 +13,19 @@ DBConnection();
 
 const app = express();
 
-// Body parser middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Cookie Parser Middleware
 app.use(cookieParser());
+
+// Body parser middleware
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Front-end URL
+    credentials: true, // Allow cookies to be sent with requests
+  })
+);
 
 app.get('/', (req, res) => {
   res.send('API is running');

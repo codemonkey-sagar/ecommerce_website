@@ -1,0 +1,125 @@
+.products {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 2rem;
+  /* flex-direction: column; */
+}
+
+.column-direction{
+  flex-direction: column;
+}
+
+.products__header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.products__title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.products__create-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+
+.products__create-icon {
+  margin-right: 0.5rem;
+}
+
+.products__create-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.products__table-container {
+  overflow-x: auto;
+}
+
+.products__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.products__thead th {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+}
+
+.products__tbody .products__row {
+  border-bottom: 1px solid #ddd;
+}
+
+.products__tbody .products__cell {
+  padding: 1rem;
+}
+
+.products__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.products__edit-btn {
+  color: #007bff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.products__edit-btn:hover {
+  color: #0056b3;
+}
+
+.products__delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.products__delete-btn:hover {
+  background-color: #b02a37;
+}
+
+.products__loader,
+.products__error {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #dc3545;
+}
+
+.products__save-btn {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.products__save-btn:hover {
+  background-color: #218838;
+}
+
+.products__cell input {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.6rem;
+}

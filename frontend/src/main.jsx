@@ -15,6 +15,9 @@ import Shipping from './pages/Shipping/Shipping.jsx';
 import Payment from './components/Payment/Payment.jsx';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder.jsx';
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder.jsx';
+import AdminRoute from './components/AdminRoute/AdminRoute.jsx';
+import Products from './components/Admin/Products/Products.jsx';
+import ProductEdit from './components/Admin/ProductEdit/ProductEdit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +74,22 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <ConfirmOrder />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: '/admin/products',
+        element: (
+          <AdminRoute>
+            <Products />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: '/admin/product/:id/edit',
+        element: (
+          <AdminRoute>
+            <ProductEdit />
+          </AdminRoute>
         ),
       },
     ],

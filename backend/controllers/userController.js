@@ -8,6 +8,7 @@ const authUser = asyncHandler(async (req, res) => {
 
   if (user && user.matchPassword(password)) {
     generateToken(res, user._id);
+    console.log('token generated and set');
     res.json({
       _id: user._id,
       name: user.name,

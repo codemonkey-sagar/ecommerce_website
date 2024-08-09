@@ -1,5 +1,6 @@
 import { apiSlice } from './apiSlice';
 import { USERS_URL } from '../constants';
+import { logout, setCredentials } from './authSlice';
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,6 +10,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setCredentials(data));
+        } catch (error) {
+          // Handle error
+        }
+      },
     }),
     register: builder.mutation({
       query: (data) => ({
@@ -16,12 +25,28 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setCredentials(data));
+        } catch (error) {
+          // Handle error
+        }
+      },
     }),
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/logout`,
         method: 'POST',
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          dispatch(logout());
+        } catch (error) {
+          // Handle error
+        }
+      },
     }),
     profile: builder.mutation({
       query: (data) => ({

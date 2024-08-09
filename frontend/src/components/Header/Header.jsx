@@ -76,6 +76,14 @@ const Header = () => {
                     <li>
                       <Link to='/profile'>Profile</Link>
                     </li>
+                    {userInfo && userInfo.isAdmin ? (
+                      <li>
+                        {' '}
+                        <Link to='/admin/products'>Products</Link>
+                      </li>
+                    ) : (
+                      ''
+                    )}
                     <li onClick={logoutHandler}>Logout</li>
                   </ul>
                 </div>

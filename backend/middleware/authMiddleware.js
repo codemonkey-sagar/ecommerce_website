@@ -2,10 +2,15 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from './asyncHandler.js';
 import User from '../models/userModel.js';
 
+// User must be authenticated
 const protect = asyncHandler(async (req, res, next) => {
+  console.log('Cookies:', req.cookies);
+  console.log('JWT Cookie:', req.cookies.jwt);
   let token;
 
+  // Read JWT from the 'jwt' cookie
   token = req.cookies.jwt;
+  console.log(token);
 
   if (token) {
     try {
@@ -25,6 +30,7 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
+// User must be an admin
 const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
