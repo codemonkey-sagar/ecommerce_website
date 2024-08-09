@@ -10,6 +10,7 @@ import './index.css';
 import Cart from './pages/Cart/Cart.jsx';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
+import Shipping from './pages/Shipping/Shipping.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />,
+      },
+      {
+        path: 'shipping',
+        element: <Shipping />,
       },
     ],
   },
