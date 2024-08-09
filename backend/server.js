@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import DBConnection from './config/db.js';
 import ProductRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Connection to MongoDB
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', ProductRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Error Handling middleware
 app.use(notFound);

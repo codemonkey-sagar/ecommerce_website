@@ -6,11 +6,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home/Home.jsx';
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import './index.css';
 import Cart from './pages/Cart/Cart.jsx';
 import Login from './pages/Login/Login.jsx';
 import Register from './pages/Register/Register.jsx';
 import Shipping from './pages/Shipping/Shipping.jsx';
+import Payment from './components/Payment/Payment.jsx';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder.jsx';
+import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +43,35 @@ const router = createBrowserRouter([
       },
       {
         path: 'shipping',
-        element: <Shipping />,
+        element: (
+          <PrivateRoute>
+            <Shipping />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'payment',
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'placeorder',
+        element: (
+          <PrivateRoute>
+            <PlaceOrder />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'orderConfirmation',
+        element: (
+          <PrivateRoute>
+            <ConfirmOrder />
+          </PrivateRoute>
+        ),
       },
     ],
   },

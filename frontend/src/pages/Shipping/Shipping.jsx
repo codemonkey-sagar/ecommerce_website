@@ -3,6 +3,7 @@ import FormContainer from '../../components/FormContainer/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { saveShippingAddress } from '../../slices/cartSlice';
+import Checkout from '../../components/Checkout/Checkout';
 import './Shipping.css';
 
 const Shipping = () => {
@@ -27,6 +28,7 @@ const Shipping = () => {
   return (
     <FormContainer>
       <div className='shipping'>
+        <Checkout step1 step2 />
         <h1 className='shipping__title'>Shipping Address</h1>
         <form className='shipping__form' onSubmit={submitHandler}>
           <div className='shipping__form-group'>

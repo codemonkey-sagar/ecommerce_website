@@ -1,15 +1,14 @@
-.shipping {
+.payment {
   max-width: 60rem;
   width: 100%;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 2rem;
-  margin: 4rem auto;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.shipping__title {
+.payment__title {
   font-size: 2.4rem;
   font-weight: 700;
   text-align: center;
@@ -17,38 +16,39 @@
   color: #333;
 }
 
-.shipping__form {
+.payment__form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.shipping__form-group {
+.payment__form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.shipping__label {
+.payment__label {
   font-size: 1.6rem;
   color: #333;
 }
 
-.shipping__input {
-  padding: 1rem;
-  font-size: 1.4rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  width: 100%;
+.payment__input-group {
+  display: flex;
+  align-items: center;
 }
 
-.shipping__input:focus {
-  border-color: #007bff;
-  outline: none;
+.payment__label--radio {
+  margin-left: 0.8rem;
 }
 
-.shipping__button {
+.payment__input {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+}
+
+.payment__button {
   padding: 1rem;
   font-size: 1.6rem;
   font-weight: 700;
@@ -58,8 +58,9 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 2rem;
 }
 
-.shipping__button:hover {
+.payment__button:hover {
   background-color: var(--secondary-color);
 }
