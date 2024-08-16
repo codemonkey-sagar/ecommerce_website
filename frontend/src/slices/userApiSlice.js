@@ -15,7 +15,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setCredentials(data));
         } catch (error) {
-          // Handle error
+          console.log(error);
         }
       },
     }),
@@ -30,7 +30,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           const { data } = await queryFulfilled;
           dispatch(setCredentials(data));
         } catch (error) {
-          // Handle error
+          console.log(error);
         }
       },
     }),
@@ -44,7 +44,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
           await queryFulfilled;
           dispatch(logout());
         } catch (error) {
-          // Handle error
+          console.log(error);
         }
       },
     }),
